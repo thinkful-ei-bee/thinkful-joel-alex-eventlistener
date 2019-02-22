@@ -14,6 +14,10 @@ function addItem(item){
   return addItem
 }
 
+function deleteItem(item){
+
+}
+
 
 function main(){
   $('#js-shopping-list-form').submit(event => {
@@ -23,6 +27,10 @@ function main(){
     let newItem = addItem(item);
     console.log(newItem);
     $('.shopping-list').append(newItem);
+  });
+
+  $('.shopping-list').on('click', '.shopping-item-delete', (event) => {
+    event.currentTarget.closest('li').remove();
   });
 }
 
