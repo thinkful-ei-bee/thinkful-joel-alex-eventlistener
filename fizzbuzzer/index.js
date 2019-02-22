@@ -2,19 +2,23 @@ function fizzbuzz(number){
   if(number % 5 === 0 && number % 3 === 0){
     return 'fizzbuzz';
   }
-  if(number % 5 === 0){
+  else if(number % 5 === 0){
     return 'fizz';
   }
-  if(number % 3 === 0){
+  else if(number % 3 === 0){
     return 'buzz';
+  } else {
+    return number;
   }
 }
 
 function fizbuzzHandler(count){
   const fizzy = [];
   for (let i = 0; i < count; i++) {
-    fizzy.push(fizzy[i]);
+    console.log(i)
+    fizzy.push(fizzbuzz(i));
   }
+  console.log(fizzy);
   return fizzy;
 }
 
@@ -24,24 +28,29 @@ function makeHtml(element){
     <span>${element}</span>
     </div>`;
   }
-  if(element === 'fizz'){
+  else if(element === 'fizz'){
     return `<div class="fizz-buzz-item ${element}">
     <span>${element}</span>
     </div>`;
   }
-  if(element === 'buzz'){
+  else if(element === 'buzz'){
     return `<div class="fizz-buzz-item ${element}">
     <span>${element}</span>
     </div>`;
+  } else {
+    return `<div class="fizz-buzz-item">
+    <span>${element}</span>
+    </div>`;
   }
-
 }
 
 function formSubmit(){
   $('#number-chooser').submit(event => {
     event.preventDefault();
-    event.target.reset();
+    
     const limit = $('#number-choice').val();
+    //event.target.reset();
+    
     const results = fizbuzzHandler(limit);
     const html = results.map(makeHtml);
     $('.js-results').html(html);
